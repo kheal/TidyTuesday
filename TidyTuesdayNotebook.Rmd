@@ -1,0 +1,11 @@
+---
+title: "Tidy Tuesday Noebook"
+output: html_notebook
+---
+# Septembver 8, 2020
+Looked at the data from the TV show Friends
+```{r, message = FALSE}
+source("200908_Friends/200908_Friends.R")
+```
+
+

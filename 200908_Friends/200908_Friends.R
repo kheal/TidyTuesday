@@ -59,9 +59,9 @@ g <- ggplot(data = summary.talk.about, aes(x= season, y = n, fill = speaker)) +
   theme(strip.background = element_blank(),
         strip.text = element_blank())
 
-g
+print(g)
 
 #Save out plot
-save_plot("Figures/200908_Friends.pdf", g, base_height = 8, base_width = 14, units="in")
+#save_plot("Figures/200908_Friends.pdf", g, base_height = 8, base_width = 14, units="in")
 
          
