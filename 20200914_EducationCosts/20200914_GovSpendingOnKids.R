@@ -45,14 +45,16 @@ kids_pubhealth_dat_fortified <- spdf_fortified %>%
 
 p <-  ggplot(data = kids_pubhealth_dat_fortified) +
   geom_polygon(aes(fill = inf_adj_perchild, x = long, y = lat, group = group)) +
-  geom_text(data = centers, aes(x = x, y = y, label = id), color = "grey") +
-  #scale_fill_viridis()+
+  geom_text(data = centers, aes(x = x, y = y, label = id), color = "grey50") +
+  scale_fill_viridis(name = "dollar per child \n(inflation adjusted)")+
   #scale_fill_brewer(palette = "RdBu")+
-  #theme_void() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.line = element_blank(), 
+        axis.ticks = element_blank(),
+        legend.text = element_text(size = 7), 
+        legend.title = element_text(size = 8)) +
   coord_map()
-p
+print(p)
 
-cowplot::ggdraw(p) + 
-  theme(plot.background = element_rect(fill="#95b0cc", color = NA))+
-  cowplot::draw_figure_label(label = "1997", position = "top.right", size = 20)
 
