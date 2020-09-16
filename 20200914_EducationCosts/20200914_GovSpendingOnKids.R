@@ -3,7 +3,14 @@ library(tidyverse)
 library(tidytuesdayR)
 library(cowplot)
 library(geojsonio)
+library(rgdal)
+library(mapproj)
+library(broom)
+library(rgeos)
+library(viridis)
 theme_set(theme_cowplot())
+library(gganimate)
+library(transformr)
 
 #Load up TT data
 kids_dat <- tt_load("2020-09-15")[[1]]
@@ -15,8 +22,6 @@ kids_dat_summary1 <- kids_dat %>%
   summarise(total = sum(inf_adj_perchild)) %>%
   arrange(desc(total))
 
-#Lets make an annomated (over time) of hexmaps for one of the variables 
-##First lets just make 1 year hexmap
 # Load Map Data  using a geojson file of the hex grid and geojson_read() function 
 # Instructions from: https://www.r-graph-gallery.com/328-hexbin-map-of-the-usa.html
 spdf <- geojson_read("20200914_EducationCosts/us_states_hexgrid.geojson",  what = "sp")
@@ -25,7 +30,7 @@ spdf <- geojson_read("20200914_EducationCosts/us_states_hexgrid.geojson",  what 
 spdf@data <- spdf@data %>%
   mutate(google_name = gsub(" \\(United States\\)", "", google_name))
 
-plot(spdf)
+#plot(spdf)
 
 spdf_fortified <- broom::tidy(spdf, region = "google_name") #Makes a df of the hexs
 
@@ -36,8 +41,7 @@ centers <- gCentroid(spdf, byid=TRUE)%>%
 
 #filter for pubhealth, with one year first
 kids_pubhealth_dat <- kids_dat %>%
-  filter(variable == "PK12ed") %>%
-  filter(year == "1997")
+  filter(variable == "highered") 
 
 #Join map data with kids data
 kids_pubhealth_dat_fortified <- spdf_fortified %>%
@@ -45,8 +49,8 @@ kids_pubhealth_dat_fortified <- spdf_fortified %>%
 
 p <-  ggplot(data = kids_pubhealth_dat_fortified) +
   geom_polygon(aes(fill = inf_adj_perchild, x = long, y = lat, group = group)) +
-  geom_text(data = centers, aes(x = x, y = y, label = id), color = "grey50") +
-  scale_fill_viridis(name = "dollar per child \n(inflation adjusted)")+
+  geom_text(data = centers, aes(x = x, y = y, label = id), color = "grey70") +
+  scale_fill_viridis(name = "$ per child \n X1000", option="magma")+
   #scale_fill_brewer(palette = "RdBu")+
   theme(axis.title = element_blank(),
         axis.text = element_blank(),
@@ -54,7 +58,11 @@ p <-  ggplot(data = kids_pubhealth_dat_fortified) +
         axis.ticks = element_blank(),
         legend.text = element_text(size = 7), 
         legend.title = element_text(size = 8)) +
-  coord_map()
-print(p)
+  labs(title ="Government spending per child on higher education in {closest_state}")+
+  coord_map() +
+  transition_states(year, 
+                    transition_length = 0.1,
+                    state_length = 6) 
 
+anim_save("20200914_EducationCosts/20200914_GovSpendingOnKids.gif", p)
 
