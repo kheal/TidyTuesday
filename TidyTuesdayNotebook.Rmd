@@ -2,6 +2,16 @@
 title: "Tidy Tuesday Noebook"
 output: html_notebook
 ---
+# September 15, 2020
+## Government spending on kids
+This dataset provides a comprehensive accounting of public spending on children from 1997 through 2016. It draws on the US Census Bureau’s Annual Survey of State and Local Government Finances, as well as several federal and other noncensus sources, to capture state-by-state spending on education, income security, health, and other areas.
+Information on each of the variables here: https://jrosen48.github.io/tidykids/articles/tidykids-codebook.html
+```{r, message = FALSE}
+
+```
+
+
+
 # Septembver 8, 2020
 Looked at the data from the TV show Friends
 ```{r, message = FALSE}
