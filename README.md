@@ -13,5 +13,5 @@ This dataset provides a comprehensive accounting of public spending on children 
 # Septembver 8, 2020
 My first tidy tuesday! We looked at the data from the TV show Friends
 
-![](https://github.com/kheal/TidyTuesday/blob/master/2020908_Friends/Figures/2020908_Friends.png)
+![](https://github.com/kheal/TidyTuesday/blob/master/2020908_Friends/Figures/200908_Friends.png)
 
