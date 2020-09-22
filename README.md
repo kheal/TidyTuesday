@@ -8,9 +8,10 @@ This dataset provides a comprehensive accounting of public spending on children 
 * making a hex map of the US, using [this tutorial](https://www.r-graph-gallery.com/328-hexbin-map-of-the-usa.html)
 * doing an animation with [gganimate](https://gganimate.com/articles/gganimate.html)
 
+![](https://github.com/kheal/TidyTuesday/blob/master/20200914_EducationCosts/20200914_GovSpendingOnKids.gif)
 
 # Septembver 8, 2020
 My first tidy tuesday! We looked at the data from the TV show Friends
 
-![](https://github.com/kheal/TidyTuesday/blob/master/2020908_Friends/Figures/2020908_Friends.pdf)
+![](https://github.com/kheal/TidyTuesday/blob/master/2020908_Friends/Figures/2020908_Friends.png)
 

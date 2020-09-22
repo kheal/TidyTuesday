@@ -49,7 +49,7 @@ summary.talk.about <- dat.text.matched %>%
 #Who talks about who over the seasons
 g <- ggplot(data = summary.talk.about, aes(x= season, y = n, fill = speaker)) +
   geom_bar(stat = "identity") +
-  geom_text(x = 1.5, y = 120, aes(label = paste0("\"", subject, "\"")), size = 5, fontface = "italic")+
+  geom_text(x = 2.5, y = 150, aes(label = paste0("\"", subject, "\"")), size = 3, fontface = "italic")+
   scale_fill_manual(values = beyonce_palette(18)) +
   labs(x = "Season", fill = "Speaker", y = "Number of times each character's name is spoken", main = "Most talked about friends over time")+
   facet_wrap(vars(paste0("\"", subject, "\""))) +
@@ -57,11 +57,16 @@ g <- ggplot(data = summary.talk.about, aes(x= season, y = n, fill = speaker)) +
   scale_x_continuous(expand = c(0, 0), limits = c(0, NA),
                      breaks = c(1,2,3,4,5,6,7,8,9,10))+
   theme(strip.background = element_blank(),
-        strip.text = element_blank())
+        strip.text = element_blank(),
+        axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8),
+        legend.text = element_text(size = 8),
+        legend.title = element_text(size = 8)
+        )
 
 print(g)
 
 #Save out plot
-save_plot("Figures/200908_Friends.png", g, base_height = 8, base_width = 14, units="in")
+save_plot("2020908_Friends/Figures/200908_Friends.png", g)
 
          
