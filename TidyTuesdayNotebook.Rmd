@@ -4,6 +4,12 @@ output:
   html_document:
     df_print: paged
 ---
+https://github.com/rfordatascience/tidytuesday/blob/master/README.md
+
+# September 22, 2020
+
+
+
 # September 15, 2020
 ## Government spending on kids
 This dataset provides a comprehensive accounting of public spending on children from 1997 through 2016. It draws on the US Census Bureau’s Annual Survey of State and Local Government Finances, as well as several federal and other noncensus sources, to capture state-by-state spending on education, income security, health, and other areas.
@@ -17,7 +23,6 @@ Information on each of the variables here: https://jrosen48.github.io/tidykids/a
 source("20200914_EducationCosts/20200914_GovSpendingOnKids.R")
 p
 ```
-
 
 
 # Septembver 8, 2020
